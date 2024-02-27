@@ -1,0 +1,7 @@
+{% extends "blog/base.html" %}    
+{%block content%}
+<h1>followers view page</h1>
+{%for follow in follows%}
+<a href="{%url 'user-post' follow%}">{{follow}}</a>
+{%endfor%}
+{%endblock%}

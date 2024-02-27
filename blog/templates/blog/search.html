@@ -1,0 +1,51 @@
+{% extends "blog/base.html" %}    
+{%block content%}
+<style>
+
+
+
+.search-results {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.user-card {
+    width: 200px;
+    margin: 10px;
+    padding: 10px;
+    background-color: #333;
+    border-radius: 10px;
+    color: #fff;
+    text-align: center;
+    position: relative;
+}
+
+.user-card img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 0px auto 0; /* Adjusted to position image at the top */
+    display: block; /* Added for centering */
+    position: absolute; /* Position image */
+    margin-bottom: 10px;
+    transform: translateX(-10%); /* Center horizontally */
+}
+
+.user-card h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+</style>
+{%for i in data%}
+    <div class="search-results">
+        <div class="user-card">
+            <img src="{{i.profile.image.url}}" alt="User 1">
+            <h3>@{{i.username}}</h3>
+            <a href="{%url 'user-post' i.username%}">view profile</a>
+        </div>
+        
+    </div>
+{%endfor%}
+{%endblock%}

@@ -1,0 +1,121 @@
+{% extends "blog/base.html" %}    
+{% load crispy_forms_filters %}  
+{% load crispy_forms_tags %}
+{%block content%}
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.message {
+    clear: both;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.your-message {
+    float: right;
+    background-color: #7effa8; /* Green background color for your messages */
+}
+
+.other-message {
+    float: left;
+    background-color: #000; /* Black background color for messages from the other side */
+    color: #fff; /* White text color for messages from the other side */
+}
+
+.other-message img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.message-content {
+    padding: 5px;
+}
+
+.message-content h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.message-content p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.message-time {
+    font-size: 12px;
+    color: #777;
+}
+.input-container {
+    margin-top: 480px;
+    display: flex;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    margin-right: 10px;
+}
+
+.send-button {
+    background-color: #1da1f2; /* Blue background color for the send button */
+    color: #fff; /* White text color for the send button */
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.send-button:hover {
+    background-color: #0f81e1; /* Darker blue background color on hover */
+}
+
+</style>
+{%for i in dict%}
+    <div class="container">
+        {%if i.sender == user%}
+            <div class="message your-message">
+                <div class="message-content">
+                    <p>{{i.mess}}</p>
+                    <span class="message-time">{{i.date}}</span>
+                </div>
+            </div>
+        {%else%}
+
+            <div class="message other-message">
+                <img src="{{i.sender.profile.image.url}}" alt="Profile Picture">
+                <div class="message-content">
+                    <h3>{{i.sender}}</h3>
+                    <p>{{i.mess}}</p>
+                    <span class="message-time">{{i.date}}</span>
+                </div>
+            </div>
+        {%endif%}
+        <!-- Add more messages as needed -->
+    </div>
+    
+{%endfor%}
+
+<form method="post" action="{% url 'send-message' pk %}">
+    {% csrf_token %}
+    <div class="input-container">
+        <input type="text" name="mess" id="mess" placeholder="Type your message...">
+        <button type="submit" class="send-button">Send</button>
+    </div>
+</form>
+{%endblock%}

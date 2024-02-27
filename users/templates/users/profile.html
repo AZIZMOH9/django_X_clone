@@ -1,0 +1,81 @@
+
+{% extends "blog/base.html" %} 
+
+{%block content%}
+    <div class="profile-box">
+        <div class="profile-header">
+            <div class="profile-picture">
+                <img src="{{user.profile.image.url}}" alt="Profile Picture">
+            </div>
+            <div class="profile-info">
+                <h2 class="profile-name">{{user.username}}</h2>
+                <p class="profile-handle">{{user.email}}</p>
+            </div>
+        </div>
+        <div class="profile-description">
+            <p>Software Engineer | Coffee Lover | Travel Enthusiast</p>
+        </div>
+        <div class="profile-stats">
+            <div class="stat">
+                <p>Following</p>
+                <a href="{%url 'view-follow'  user%}">{{i}}</a>
+                
+            </div>
+            <div class="stat">
+                <p>Followers</p>
+                <a href="{%url 'view-followd'  user%}">{{i}}</a>
+                
+            </div>
+            
+            
+        </div>
+        <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+        <div >
+            <a href="{%url 'profile-update'%}" style="text-align: center;">Update account information</a>
+        </div>
+        <a href="{%url 'post-create'%}" class="tweet-button">Write a Tweet</a>
+    </div>
+    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+    
+    <div class="tweet">
+        {%for twit in dict%}
+            
+                <div class="profile-picture">
+                    <img src="{{twit.name.profile.image.url}}" alt="Profile Picture">
+                </div>
+                <div class="user" ><a  href="{%url 'user-post' twit.name%}">{{twit.name}}</a>
+                    
+                </div>
+                <div>
+                    <div class="dropdown">
+                        {%if user == twit.name%}
+                            <button onclick="toggleDropdown()">...</button>
+                            <div class="dropdown-content">
+                                <a href="{%url 'post-update' twit.id%}">edit</a>
+                                <a href="{%url 'post-delete' twit.id%}">delete</a>
+                            </div>
+
+                        {%endif%}
+                    </div>
+                </div>
+                <div class="timestamp">{{twit.date}}</div>
+                <div class="content">{{twit.twitt}}</div>
+                <div class="actions">
+                    <button>Like</button>
+                    <button>Retweet</button>
+                    <button>Reply</button>
+                </div>
+           
+            
+            <script>
+                function toggleDropdown() {
+                    var dropdownContent = document.querySelector('.dropdown-content');
+                    dropdownContent.style.display === 'block' ? dropdownContent.style.display = 'none' : dropdownContent.style.display = 'block';
+                }
+            </script>
+            <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+            
+            
+        {%endfor%}
+        </div>
+{%endblock%}

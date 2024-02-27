@@ -1,0 +1,13 @@
+{% extends "blog/base.html" %}    
+{%block content%}
+<div class="tweet">
+    <div class="user" ><a  href="">{{twitts.name}}</a></div>
+    <div class="timestamp">{{twitts.date}}</div>
+    <div class="content">{{twitts.twitt}}</div>
+    <div class="actions">
+        <button>Like</button>
+        <button>Retweet</button>
+        <button>Reply</button>
+    </div>
+</div>
+{%endblock%}

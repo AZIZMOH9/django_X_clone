@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title >Twitter Clone</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f8fa;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        .logs {
+            background-color: #1da1f2;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+            display: flex;
+            justify-content:end;
+            align-items: center;
+        }
+        .taskbar {
+            display: flex;
+        }
+        .taskbar a {
+            color: #fff;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+        .taskbarr{
+            display: flex;
+        }
+        .taskbarr a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+        .taskbarr button {
+            
+            text-decoration: none;
+            margin-left: 800px;
+            
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            flex: 1;
+        }
+        .footer {
+            background-color: #1da1f2;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            width: 100%;
+            flex-shrink: 0;
+        }
+        .footer-2 {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            width: 100%;
+            flex-shrink: 0;
+        }
+        .tweet {
+            background-color: #333;
+            border: 1px solid #333;
+            border-radius: 20px;
+            padding: 10px;
+            margin: 30px;
+           
+            margin-bottom: 0px;
+            padding: 10px;
+        }
+        .tweet .user {
+            font-weight: bold;
+        }
+        .tweet .content {
+            margin-top: 5px;
+            color: #fff;
+        }
+        .tweet .timestamp {
+            font-size: 12px;
+            color: #888;
+        }
+        .tweet .actions {
+            margin-top: 10px;
+        }
+        .tweet .actions button {
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            color: #fff;
+            margin-right: 10px;
+        }
+        .profile-picture img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 6px;
+        }
+        .profile-box {
+            background-color: #1c1a1a;
+            border: 4px solid #413e3e;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            padding: 20px;
+            margin-left: -50%;
+            margin-right: -50%;
+            position: relative;
+            align-items: center;
+            max-width: 1700px;
+   
+    
+    /* Add a maximum width to prevent it from becoming too wide */
+    
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+        }
+
+        .profile-info {
+            flex: 1;
+            color:#827a7a;
+            
+        }
+
+        .profile-name {
+            margin: 0;
+            color:#827a7a;
+            
+        }
+
+        .profile-handle {
+            margin: 0;
+            color:#827a7a;
+            
+        }
+
+        .profile-description {
+            margin-top: 10px;
+            color:#827a7a;
+            text-align: center;
+        }
+
+        .profile-stats {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .stat {
+            text-align: center;
+            color:#827a7a;
+        }
+
+        .stat p {
+            margin: 0;
+            color:#827a7a;
+        }
+        .tweet-button {
+                    position: fixed;
+                    bottom: 70px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background-color: black;
+                    color: white;
+                    padding: 10px 20px;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    font-size: 16px;
+        }
+
+        .tweet-button:hover {
+            background-color: #333;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 120px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 8px 12px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="header">
+        <h1 style="margin-right: 40px;" >X</h1> <!-- Added margin to create space -->
+
+        <div class="taskbar">
+            <a href="/blog/">Home</a>
+            <a href="/messages/">Messages</a>
+            
+        </div>
+
+        <form class="form-inline my-2 my-lg-0" action="{%url 'search'%}">
+            <input class="form-control mr-sm-2" name="q" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+
+        <div class="taskbarr" style="text-align: right;">
+            {%if user.is_authenticated %}
+            <form method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit" >logout</button>
+            </form>
+                <a href="{% url 'profile' %}">Profile</a>
+            {% else %}
+                <a href="{% url 'login' %}">login</a>
+                <a href="{% url 'register'%}">Sign up</a>
+            {% endif %}
+            <!-- Add more taskbar items as needed -->
+        </div>
+    </div>
+  
+    <div class="container">
+        {%if messages%}
+            {%for message in messages%}
+                <div class="alert alert-{{ message.tags }}" role="alert" id="message">
+                    {{ message }}
+                </div>
+            {%endfor%}
+        {% endif %}
+       {%block content%}
+       {% endblock%}
+       
+       {%if is_paginated %}
+        {%if page_obj.has_previous %}
+            <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+            <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+        {%endif%}
+        {%for num in page_obj.paginator.page_range%}
+            {% if page_obj.number == num %}
+                <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+            {% endif %}
+
+        {%endfor%}
+        {%if page_obj.has_next%}
+            <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+            <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+        {%endif%}
+        
+
+
+        {%endif%}
+        <!-- More tweets can be added here -->
+    </div>
+   
+    <div class="footer-2">
+        <p>X</p>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

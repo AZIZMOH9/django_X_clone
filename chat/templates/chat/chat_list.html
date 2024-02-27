@@ -1,0 +1,84 @@
+{% extends "blog/base.html" %}    
+{%block content%}
+<style>body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color:#657786
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 20px;
+    
+}
+
+h1 {
+    text-align: center;
+}
+
+.account-list {
+    list-style-type: none;
+    padding: 0;
+    color:#657786
+}
+
+.account-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    border: 1px solid #ccc; /* Added border */
+    padding: 10px; /* Added padding */
+    border-radius: 5px; /* Added border radius */
+    background-color:#524c4c;
+}
+
+.account-item img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.account-info {
+    flex: 1;
+}
+
+.account-info h2 {
+    margin: 0;
+    font-size: 18px;
+    color: #d8d2d2; /* Changed color to black */
+}
+
+.account-info p {
+    margin: 5px 0 0;
+    font-size: 14px;
+    color: #657786;
+}
+.delete-button {
+    background-color: #ff4d4d; /* Red background color */
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+</style>
+<h1>Messages</h1>
+{%for i in dict%}
+<div class="container">
+    
+    <ul class="account-list">
+        <li class="account-item">
+            <img src="{{i.0.profile.image.url}}" alt="Profile Picture">
+            <div class="account-info">
+                <h2 color="657786" >@{{i.0}}</h2>
+                <a href="{%url 'chat-view' i.1%}">Message preview...</a>
+            </div>
+            <div class="delete-button">Delete</div>
+        </li>
+    </ul>
+</div>
+
+{%endfor%}
+{%endblock%}
