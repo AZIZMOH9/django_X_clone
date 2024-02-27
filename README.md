@@ -14,7 +14,7 @@ Admin Panel: Administrators have access to an admin panel to manage users and co
 ## Installation
 To get started with the X Clone project, follow these steps:
 
-Clone the repository: git clone https://github.com/your-username/x-clone.git
+Clone the repository: git clone https://github.com/AZIZMOH9/django_twitter-clone
 Navigate to the project directory: cd x-clone
 Create a virtual environment: python -m venv env
 Activate the virtual environment:
