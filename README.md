@@ -24,3 +24,10 @@ Install dependencies: pip install -r requirements.txt
 Perform database migrations: python manage.py migrate
 Create a superuser: python manage.py createsuperuser
 Start the development server: python manage.py runserver
+
+
+
+
+https://github.com/AZIZMOH9/django_twitter-clone/assets/101477883/b8481bd0-14e6-4cd3-8f11-bb2abb475e13
+
+
