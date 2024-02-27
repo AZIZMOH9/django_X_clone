@@ -28,6 +28,7 @@ Start the development server: python manage.py runserver
 
 
 
-https://github.com/AZIZMOH9/django_twitter-clone/assets/101477883/b8481bd0-14e6-4cd3-8f11-bb2abb475e13
+https://github.com/AZIZMOH9/django_twitter-clone/assets/101477883/044aac97-460b-49c6-aed5-78611e12ba4d
+
 
 
